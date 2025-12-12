@@ -1,3 +1,6 @@
+import "../stylesheet/moviecard.css"
+import arrow from "../assets/arrow.svg"
+
 function MovieCard({movie}) {
 
     function FavoriteButton() {
@@ -12,11 +15,16 @@ function MovieCard({movie}) {
             </div>
         </div>
         <div className="movie-info">
-            <h3 className="movie-title">{movie.title}</h3>
-            <div className="movie-rating">★★★★★</div>
+            <div className="right-info">
+                <div className="title-date">
+                    <p className="movie-title">{movie.title}</p>
+                    <div className="movie-date">2022</div>
+                </div>
+                <div className="movie-rating">★★★★★</div>
+            </div>
             <div className="watch-text">
                 <div className="watch-button">Watch Now</div>
-                <img src="C:\Users\hpp\Desktop\Programming\GitRepository\movie-matrix\frontend-moviematrix\src\assets\arrow.png"/>
+                <img src={arrow} height="16"/>
             </div>
         </div>
     </div>
