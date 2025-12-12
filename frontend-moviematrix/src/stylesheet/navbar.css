@@ -1,3 +1,7 @@
+main {
+    width: 100vw;
+}
+
 .nav-bar {
     display: flex;
     flex-direction: row;
@@ -10,6 +14,7 @@
     padding-left: 74px;
     padding-right: 74px;
     z-index: 10;
+    margin: 0;
 }
 
 .profile {

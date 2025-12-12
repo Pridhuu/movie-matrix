@@ -1,12 +1,21 @@
+.whole {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .movies-page {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 36px;
+    gap: 36px;
 }
 
 .movie-grid {
     width: 1070px;
-    height: 100vh; 
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -15,7 +24,12 @@
 
 .search-form {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
+    position: relative;
+    left: 32px;
 }
 
 .search-input {
@@ -27,9 +41,45 @@
 }
 
 .search-button {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border-style: none;
     background-color: #202020;
+}
+
+.search-svg {
+    position: relative;
+    top: 2px;
+}
+
+.movie-grid-outer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px
+}
+
+.movie-grids {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+}
+
+.grid-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.line {
+    width: 100%;
+    height: .5px;
+    background-color: #9A9696;
+}
+
+.heading {
+    margin: 0;
+    padding: 0;
+    color: #DEDDDB;
 }
