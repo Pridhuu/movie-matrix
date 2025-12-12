@@ -1,0 +1,54 @@
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #DEDDDB;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 74px;
+    padding-right: 74px;
+    z-index: 10;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+}
+
+.profile-picture {
+    display: flex;
+    align-items: center;
+}
+
+.nav-pages {
+    color: #DEDDDB;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.nav-home {
+    text-decoration: none;
+    color: #DEDDDB;
+}
+
+.nav-movies {
+    text-decoration: none;
+    color: #DEDDDB;
+}
+
+.nav-series {
+    text-decoration: none;
+    color: #DEDDDB;
+}
+
+.logo {
+    text-decoration: none;
+    cursor: pointer;
+    color: #DEDDDB;
+}
+

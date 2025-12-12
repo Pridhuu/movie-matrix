@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Hind:wght@300;400;500;600;700&family=Martian+Mono:wght@100..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Sarpanch:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  background-color: #161616;
+  margin: 0;
+  padding-top: 45px;
+  height: 100%;
+  background-image: url("../assets/bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
