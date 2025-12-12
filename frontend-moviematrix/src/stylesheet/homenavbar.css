@@ -1,0 +1,39 @@
+.home-nav-bar {
+    color: #202020;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    width: 100vw;
+}
+
+.home-profile {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    padding-right: 74px;
+}
+
+.home-nav-pages {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    width: 250px;
+    padding-right: 210px;
+}
+
+.hero-nav-home {
+    text-decoration: none;
+    color: #202020;
+}
+
+.hero-nav-movies {
+    text-decoration: none;
+    color: #202020;
+}
+
+.hero-nav-favorites {
+    text-decoration: none;
+    color: #202020;
+}
