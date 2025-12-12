@@ -13,7 +13,7 @@ function NavBar() {
         <div className="nav-pages">
             <Link to="/" className="nav-home">Home</Link>
             <Link to="/Movies" className="nav-movies">Movies</Link>
-            <Link to="/Series" className="nav-series">Series</Link>
+            <Link to="/Favorites" className="nav-series">Favorites</Link>
         </div>
         <div className="profile">
             <p className="profile-name">Pridhu</p>
