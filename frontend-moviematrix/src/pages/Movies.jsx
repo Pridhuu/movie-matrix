@@ -2,6 +2,7 @@ import MovieCard from "../components/MovieCard"
 import {useState} from "react";
 import "../stylesheet/moviespage.css"
 import searchIcon from "../assets/search.svg"
+import NavBar from "../components/NavBar";
 
 function Movies() {
 
@@ -21,17 +22,37 @@ function Movies() {
         alert(searchQuery);
     }
 
-    return <div className="movies-page">
-        <form onSubmit={onHandle} className="search-form">
-            <input type="text" placeholder="Find your film." className="search-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
-            <button type="submit" className="search-button">
-                <img src={searchIcon} alt="Search" height="18"/>
-            </button>
-        </form>
-        <div className="movie-grid">
-            {movies.map((item) => item.title.toLowerCase().startsWith(searchQuery) && (<MovieCard movie={item} key={item.id}/>))}
+    return <main className="whole">
+        <NavBar />
+        <div className="movies-page">
+            <form onSubmit={onHandle} className="search-form">
+                <input type="text" placeholder="Find your film." className="search-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
+                <button type="submit" className="search-button">
+                    <img src={searchIcon} alt="Search" height="18" className="search-svg"/>
+                </button>
+            </form>
+            <div className="movie-grids">
+                <div className="movie-grid-outer">
+                    <div className="grid-header">
+                        <h4 className="heading">Trending</h4>
+                        <div className="line"></div>
+                    </div>
+                    <div className="movie-grid">
+                        {movies.map((item) => item.title.toLowerCase().startsWith(searchQuery) && (<MovieCard movie={item} key={item.id}/>))}
+                    </div>
+                </div>
+                <div className="movie-grid-outer">
+                    <div className="grid-header">
+                        <h4 className="heading">Latest</h4>
+                        <div className="line"></div>
+                    </div>
+                    <div className="movie-grid">
+                        {movies.map((item) => item.title.toLowerCase().startsWith(searchQuery) && (<MovieCard movie={item} key={item.id}/>))}
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 }
 
 export default Movies
