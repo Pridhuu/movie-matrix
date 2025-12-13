@@ -1,24 +1,28 @@
 import "../stylesheet/moviecard.css"
 import arrow from "../assets/arrow.svg"
+import { useMovieContext } from "../contexts/MovieContext"
 
 function MovieCard({movie}) {
 
-    function FavoriteButton() {
-        alert("Clicked")
+    const {isFavorite, addToFavorites, removeFromFavorites} = useMovieContext()
+    const favorite = isFavorite(movie.id)
+
+    function FavoriteButton(e) {
+        e.preventDefault()
+        if (favorite) removeFromFavorites(movie.id)
+        else addToFavorites(movie)
     }
 
     return <div className="movie-card">
         <div className="movie-poster">
-            <img src={movie.url} alt={movie.title} />
-            <div className="movie-overlay">
-                <button className="favorite-button" onClick={FavoriteButton}>♥</button>
-            </div>
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="poster" />
+            <button className={`favorite-button ${favorite ? "active" : ""}`} onClick={FavoriteButton}>♥</button>
         </div>
         <div className="movie-info">
             <div className="right-info">
                 <div className="title-date">
                     <p className="movie-title">{movie.title}</p>
-                    <div className="movie-date">2022</div>
+                    <div className="movie-date">{movie.release_date?.split("-")[0]}</div>
                 </div>
                 <div className="movie-rating">★★★★★</div>
             </div>

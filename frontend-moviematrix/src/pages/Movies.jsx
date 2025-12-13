@@ -1,25 +1,51 @@
 import MovieCard from "../components/MovieCard"
-import {useState} from "react";
+import { useState, useEffect } from "react";
 import "../stylesheet/moviespage.css"
 import searchIcon from "../assets/search.svg"
 import NavBar from "../components/NavBar";
+import { getTrendingMovies, searchMovies } from "../services/api";
 
 function Movies() {
 
-    const movies = [
-        {id: 1, title: "Terminator"},
-        {id: 2, title: "Aquaman"},
-        {id: 3, title: "Black Panther"},
-        {id: 4, title: "Ironman"},
-        {id: 5, title: "Avengers"},
-        {id: 6, title: "Yozuki"},
-    ];
-
     const [searchQuery, setSearchQuery] = useState("");
+    const[movies, setMovies] = useState([]);
+    const[error, setError] = useState(null);
+    const[loading, setLoading] = useState(false);
 
-    function onHandle(e) {
+    useEffect(() => {
+        const loadTrendingMovies = async () => {
+            try{
+                const TrendingMovies = await getTrendingMovies();
+                setMovies(TrendingMovies);
+            } catch(e) {
+                console.log(e);
+                setError("Failed to load movies...");
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        loadTrendingMovies();
+
+    }, []);
+
+
+    async function onHandle(e) {
+        if(!searchQuery.trim()) return;
+        if(loading) return
         e.preventDefault()
         alert(searchQuery);
+        setLoading(true);
+        try {
+            const searchResult = await searchMovies();
+            setMovies(searchResult);
+            setError(null);
+        } catch(e) {
+            console.log(e);
+            setError("Error in searching...");
+        } finally {
+            setLoading(flase);
+        }
     }
 
     return <main className="whole">
@@ -31,7 +57,7 @@ function Movies() {
                     <img src={searchIcon} alt="Search" height="18" className="search-svg"/>
                 </button>
             </form>
-            <div className="movie-grids">
+            { loading ? (<div className="loading">Loading...</div>) : (<div className="movie-grids">
                 <div className="movie-grid-outer">
                     <div className="grid-header">
                         <h4 className="heading">Trending</h4>
@@ -41,16 +67,8 @@ function Movies() {
                         {movies.map((item) => item.title.toLowerCase().startsWith(searchQuery) && (<MovieCard movie={item} key={item.id}/>))}
                     </div>
                 </div>
-                <div className="movie-grid-outer">
-                    <div className="grid-header">
-                        <h4 className="heading">Latest</h4>
-                        <div className="line"></div>
-                    </div>
-                    <div className="movie-grid">
-                        {movies.map((item) => item.title.toLowerCase().startsWith(searchQuery) && (<MovieCard movie={item} key={item.id}/>))}
-                    </div>
-                </div>
-            </div>
+            </div>)}
+            { error && <div className="error-message">{error}</div> }
         </div>
     </main>
 }

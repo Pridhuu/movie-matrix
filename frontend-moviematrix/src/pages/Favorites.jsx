@@ -3,17 +3,11 @@ import "../stylesheet/favoritespage.css"
 import NavBar from "../components/NavBar";
 import {useState} from "react";
 import searchIcon from "../assets/search.svg"
+import { useMovieContext } from "../contexts/MovieContext";
 
 function Favorites() {
 
-    const movies = [
-        {id: 1, title: "Terminator"},
-        {id: 2, title: "Aquaman"},
-        {id: 3, title: "Black Panther"},
-        {id: 4, title: "Ironman"},
-        {id: 5, title: "Avengers"},
-        {id: 6, title: "Yozuki"},
-    ];
+    const { favorites } = useMovieContext();
 
     const [searchQuery, setSearchQuery] = useState("");
     
@@ -22,28 +16,31 @@ function Favorites() {
         alert(searchQuery);
     }
 
-    return <main className="whole-fav">
-        <NavBar />
-        <div className="movies-page">
-            <form onSubmit={onHandle} className="search-form">
-                <input type="text" placeholder="Find your film." className="search-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
-                <button type="submit" className="search-button">
-                    <img src={searchIcon} alt="Search" height="18" className="search-svg"/>
-                </button>
-            </form>
-            <div className="movie-grids">
-                <div className="movie-grid-outer">
-                    <div className="grid-header">
-                        <h4 className="heading">Favorites</h4>
-                        <div className="line"></div>
-                    </div>
-                    <div className="movie-grid">
-                        {movies.map((item) => item.title.toLowerCase().startsWith(searchQuery) && (<MovieCard movie={item} key={item.id}/>))}
+    <form onSubmit={onHandle} className="search-form">
+        <input type="text" placeholder="Find your film." className="search-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
+        <button type="submit" className="search-button">
+            <img src={searchIcon} alt="Search" height="18" className="search-svg"/>
+        </button>
+    </form>
+
+    if(favorites) {
+        return <main className="whole-fav">
+            <NavBar />
+            <div className="movies-page">
+                <div className="movie-grids">
+                    <div className="movie-grid-outer">
+                        <div className="grid-header">
+                            <h4 className="heading">Favorites</h4>
+                            <div className="line"></div>
+                        </div>
+                        <div className="movie-grid">
+                            {favorites.map((item) => item.title.toLowerCase().startsWith(searchQuery) && (<MovieCard movie={item} key={item.id}/>))}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    }
 }
 
 export default Favorites
