@@ -8,9 +8,4 @@ body {
   margin: 0;
   padding-top: 45px;
   height: 100%;
-  background-image: url("../assets/bg.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
 }

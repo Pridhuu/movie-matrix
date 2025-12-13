@@ -1,6 +1,8 @@
 import MovieCard from "../components/MovieCard"
 import "../stylesheet/favoritespage.css"
 import NavBar from "../components/NavBar";
+import {useState} from "react";
+import searchIcon from "../assets/search.svg"
 
 function Favorites() {
 
@@ -13,15 +15,32 @@ function Favorites() {
         {id: 6, title: "Yozuki"},
     ];
 
-    return <main className="whole">
+    const [searchQuery, setSearchQuery] = useState("");
+    
+    function onHandle(e) {
+        e.preventDefault()
+        alert(searchQuery);
+    }
+
+    return <main className="whole-fav">
         <NavBar />
-        <div className="movie-grid-out">
-            <div className="grid_header">
-                <h4 className="headings">Favorites</h4>
-                <div className="lines"></div>
-            </div>
-            <div className="movies-grid">
-                {movies.map((item) => (<MovieCard movie={item} key={item.id}/>))}
+        <div className="movies-page">
+            <form onSubmit={onHandle} className="search-form">
+                <input type="text" placeholder="Find your film." className="search-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
+                <button type="submit" className="search-button">
+                    <img src={searchIcon} alt="Search" height="18" className="search-svg"/>
+                </button>
+            </form>
+            <div className="movie-grids">
+                <div className="movie-grid-outer">
+                    <div className="grid-header">
+                        <h4 className="heading">Favorites</h4>
+                        <div className="line"></div>
+                    </div>
+                    <div className="movie-grid">
+                        {movies.map((item) => item.title.toLowerCase().startsWith(searchQuery) && (<MovieCard movie={item} key={item.id}/>))}
+                    </div>
+                </div>
             </div>
         </div>
     </main>

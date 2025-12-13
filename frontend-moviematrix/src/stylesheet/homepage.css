@@ -1,17 +1,85 @@
-body {
-  margin: 0;
-  padding-top: 45px;
-  height: 100%;
-  background-image: url("../assets/homecover.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+.home-page {
+    min-height: 900px;
+    width: 100vw;
+    background-color: #DEDDDB;
 }
 
-.home-page {
+.bg-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    left: 280px;
+    bottom: 80px;
+    gap: 18px;
+    pointer-events: none;
+}
+
+.img-background {
+    height: 900px;
+    width: 620px;
+    background-image: url("../assets/mask.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+    position: fixed;
+    pointer-events: none;
+}
+
+.text-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
+}
+
+.p1 {
+    font-family: "Editorial-Regular";
+    font-weight: 100;
+    margin: 0;
+    font-size: 72px;
+}
+
+.p2 {
+    font-family: "Editorial-Itallics";
+    font-weight: 100;
+    margin: 0;
+    font-style: italic;
+    font-size: 72px;
+}
+
+@font-face {
+  font-family: "Editorial-Regular";
+  src: url("../fonts/myFont-UL.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Editorial-Itallics";
+  src: url("../fonts/myFont-ULI.otf") format("truetype");
+}
+
+.toMovies {
+    pointer-events: all;
+    font-size: 18px;
+    color: #DEDDDB;
+    border-style: none;
+    width: 180px;
+    padding: 12px;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
+    background-color: #202020;
+    gap: 8px;
+    cursor: pointer;
 }
